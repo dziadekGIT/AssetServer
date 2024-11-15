@@ -9,7 +9,13 @@ Asset Server - app for store, view and publish own 3d assets.
 - [Run](#run)
 
 ## StateOfArt
+**AssetServer developement roadmap**
+- 
+<img src="https://github.com/dziadekGIT/AssetServer/blob/feature/initial-code/readme/State%20of%20art.jpg?raw=true" alt ="roadmap" width="600"/>
 
+**Frontend view - inital stage of project - basic functionality**
+-
+<img src="https://github.com/dziadekGIT/AssetServer/blob/feature/initial-code/readme/front.png" alt ="frontend" width="400"/>
 
 ## Funcionalities
 
