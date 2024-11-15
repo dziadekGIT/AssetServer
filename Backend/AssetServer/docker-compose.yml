@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: assetdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=database;Database=assetdb;Username=myuser;Password=mypassword
+    depends_on:
+      - database
+    ports:
+      - "5190:5190"
+      - "5189:5189"
+  frontend:
+    build:
+      context: ../../Frontend/AssetServer
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../../Frontend/AssetServer:/app
+    environment:
+      - BACKEND_URL=http://backend:5190
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+    
+#dotnet ef database update --connection "Host=localhost;Port=5432;Database=assetdb;Username=myuser;Password=mypassword"
