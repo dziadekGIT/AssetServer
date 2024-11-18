@@ -109,3 +109,4 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.pdb
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.genruntimeconfig.cache
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/ref/AssetServer.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.sourcelink.json
