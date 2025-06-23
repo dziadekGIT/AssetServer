@@ -27,7 +27,7 @@ Asset Server - app for store, view and publish own 3d assets.
 ## Technologies
 
 - **Backend**: C#, ASP.NET Core, Entity framework
-- **Frontend**: Python, Django
+- **Frontend**: JS React
 - **DB**: PostgreSQL
 - **Contenerization**: Docker, Docker Compose
 
