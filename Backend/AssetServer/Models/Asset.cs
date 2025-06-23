@@ -14,5 +14,8 @@ namespace AssetServerAPI.Models
 
         public string? ImageFileName { get; set; }
         public string? FbxFileName { get; set; }
+        
+        public string? ImageFileUrl { get; set; }
+        public string? FbxUrl { get; set; }
     }
 }

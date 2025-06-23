@@ -6,6 +6,10 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/AssetServer.runtimeconfig.json
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/AssetServer.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/AssetServer.pdb
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Azure.Core.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Azure.Storage.Blobs.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Azure.Storage.Common.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/CommunityToolkit.HighPerformance.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/HtmlAgilityPack.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Humanizer.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
@@ -20,8 +24,10 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Minio.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Mono.TextTemplating.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Newtonsoft.Json.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
@@ -30,12 +36,16 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.ClientModel.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.CodeDom.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Composition.AttributedModel.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Composition.Convention.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Composition.Hosting.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Composition.Runtime.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Composition.TypedParts.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.IO.Hashing.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Memory.Data.dll
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/System.Reactive.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -95,6 +105,7 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.csproj.CoreCompileInputs.cache
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.MvcApplicationPartsAssemblyInfo.cs
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.MvcApplicationPartsAssemblyInfo.cache
+/Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.sourcelink.json
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/staticwebassets.build.json
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/staticwebassets.development.json
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/staticwebassets/msbuild.AssetServer.Microsoft.AspNetCore.StaticWebAssets.props
@@ -109,4 +120,3 @@
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.pdb
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.genruntimeconfig.cache
 /Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/ref/AssetServer.dll
-/Users/epizode/Desktop/AssetServer/Backend/AssetServer/obj/Debug/net8.0/AssetServer.sourcelink.json

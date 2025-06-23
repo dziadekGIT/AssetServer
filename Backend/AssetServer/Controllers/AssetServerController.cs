@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AssetServerAPI.Models;
+using AssetServerAPI.Utilities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssetServerAPI.Controllers
@@ -9,11 +10,14 @@ namespace AssetServerAPI.Controllers
     public class AssetServerController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly BlobStorageService _blobStorageService;
         
-        public AssetServerController(ApplicationDbContext context)
+        public AssetServerController(ApplicationDbContext context, BlobStorageService blobStorageService)
         {
             _context = context;
+            _blobStorageService = blobStorageService;
         }
+        
         /// <summary>
         /// Stands for C from CRUD - CREATE. Adding asset to DB.
         /// </summary>
@@ -24,66 +28,120 @@ namespace AssetServerAPI.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromForm] Asset asset, IFormFile imagePath, IFormFile fbxPath)
         {
-         
             if (imagePath == null || fbxPath == null)
             {
-                return BadRequest("Pliki są wymagane.");
+                return BadRequest("Files are required");
             }
-
-
-            var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
-            if (!Directory.Exists(uploadsDirectory))
-            {
-                Directory.CreateDirectory(uploadsDirectory);
-            }
-
-   
-            var imageFileName = Path.Combine(uploadsDirectory, imagePath.FileName);
-            var fbxFileName = Path.Combine(uploadsDirectory, fbxPath.FileName);
-
-
-            using (var stream = new FileStream(imageFileName, FileMode.Create))
-            {
-                await imagePath.CopyToAsync(stream);
-            }
-
-
-            using (var stream = new FileStream(fbxFileName, FileMode.Create))
-            {
-                await fbxPath.CopyToAsync(stream);
-            }
-
-
+            
+            var imageUrl = await _blobStorageService.UploadFileAsync(imagePath);
+            var fbxUrl = await _blobStorageService.UploadFileAsync(fbxPath);
+            
             var newAsset = new Asset
             {
                 Name = asset.Name,
-                ImageFileName = imagePath.FileName,  
-                FbxFileName = fbxPath.FileName,    
-                CreatedAt = DateTime.UtcNow
+                ImageFileName = imagePath.FileName,
+                FbxFileName = fbxPath.FileName,
+                CreatedAt = DateTime.UtcNow,
+                ImageFileUrl = imageUrl,
+                FbxUrl = fbxUrl
             };
             
             _context.Assets.Add(newAsset);
             await _context.SaveChangesAsync();
-            
-            return Ok(newAsset);   
+
+            return Ok(newAsset);
         }
+
         
         [HttpGet("Read")]
-        public IActionResult Read()
+        public async Task<IActionResult> Read()
         {
-            return Ok("cRud - Read - works");
+            try
+            {
+                var assets = await _context.Assets.ToListAsync();
+                return Ok(assets);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Read method: {ex.Message}");
+                return StatusCode(500, new { error = "Internal server error." });
+            }
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            try
+            {
+                var asset = await _context.Assets.FindAsync(id);
+                if (asset == null)
+                {
+                    return NotFound(new { error = "Asset not found." });
+                }
+                return Ok(asset);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Get method: {ex.Message}");
+                return StatusCode(500, new { error = "Internal server error." });
+            }
         }
         
-        [HttpPatch("Update")]
-        public IActionResult Update()
+        [HttpPatch("Update/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Asset updatedAsset)
         {
-            return Ok("crUd - Update - works");
+            if (id != updatedAsset.Id)
+            {
+                return BadRequest(new { error = "ID mismatch." });
+            }
+
+            try
+            {
+                var existingAsset = await _context.Assets.FindAsync(id);
+                if (existingAsset == null)
+                {
+                    return NotFound(new { error = "Asset not found." });
+                }
+                
+                existingAsset.Name = updatedAsset.Name;
+                
+                _context.Assets.Update(existingAsset);
+                await _context.SaveChangesAsync();
+
+                return Ok(existingAsset);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Update method: {ex.Message}");
+                return StatusCode(500, new { error = "Internal server error." });
+            }
         }
+
         
-        [HttpDelete("Delete")]
-        public IActionResult Delete()
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            return Ok("cruD - Delete - works");
+            try
+            {
+                var asset = await _context.Assets.FindAsync(id);
+                if (asset == null)
+                {
+                    return NotFound(new { error = "Asset not found." });
+                }
+
+                await _blobStorageService.DeleteFileAsync(asset.ImageFileName);
+                await _blobStorageService.DeleteFileAsync(asset.FbxFileName);
+
+                _context.Assets.Remove(asset);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Asset deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Delete method: {ex.Message}");
+                return StatusCode(500, new { error = "Internal server error." });
+            }
         }
+
     }
 }

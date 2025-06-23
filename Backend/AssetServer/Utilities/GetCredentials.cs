@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace PasswordResetAPI.Utilities
+namespace AssetServerAPI.Utilities
 {
 
     public class User
