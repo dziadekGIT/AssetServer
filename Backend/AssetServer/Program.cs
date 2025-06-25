@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using AssetServerAPI;
 using AssetServerAPI.Utilities;
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -19,10 +19,7 @@ using (var scope = app.Services.CreateScope())
 {
     var blobStorageService = scope.ServiceProvider.GetRequiredService<BlobStorageService>();
     await blobStorageService.CreateBucketIfNotExistsAsync(); 
-
 }
-
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -30,7 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => 
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Password Reset API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Asset Server");
     });
 }
 app.UseRouting();
@@ -43,7 +40,6 @@ app.UseEndpoints(endpoints =>
 });
 #pragma warning restore ASP0014
 
-//app.UseHttpsRedirection();
-app.MapControllers();
 
+app.MapControllers();
 app.Run();
